@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cubo Interactivo - AR</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <!-- Cubo básico con interactividad -->
+        <a-box position="0 1.5 -3" rotation="0 45 45" color="tomato" shadow 
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 5000"
+        id="interactive-cube"></a-box>
+
+        <!-- Mensaje inicial oculto -->
+        <a-text value="Area de la cara del cubo: lado^2\nVolumen del cubo: lado^3" position="0 0.5 -3" color="black" 
+        background="color: white" visible="true" id="message"></a-text>
+    </a-scene>
+
+    <script>
+        // Capturar los elementos del cubo y el texto
+        const cube = document.querySelector('#interactive-cube');
+        const message = document.querySelector('#message');
+
+        // Alternar visibilidad del texto al hacer clic en el cubo
+        cube.addEventListener('click', () => {
+            message.setAttribute('visible', !message.getAttribute('visible'));
+        });
+    </script>
+</body>
+</html>
